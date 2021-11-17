@@ -16,6 +16,7 @@ runs:
         node-version: "${{ steps.nvm.outputs.NVMRC }}"
     - name: Cache node modules
       uses: actions/cache@v2
+      id: npm_cache
       env:
         cache-name: cache-node-modules
       with:
@@ -27,5 +28,5 @@ runs:
           ${{ runner.os }}-
     - name: Install Dependencies
       shell: bash
-      if: steps.cache.outputs.cache-hit != 'true'
+      if: steps.npm_cache.outputs.cache-hit != 'true'
       run: npm ci
