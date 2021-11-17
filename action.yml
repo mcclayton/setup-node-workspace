@@ -8,6 +8,7 @@ runs:
     - uses: actions/checkout@v2
     - name: Read .nvmrc
       run: echo ::set-output name=NVMRC::$(cat .nvmrc)
+      shell: bash
       id: nvm
     - name: Use Node.js (.nvmrc)
       uses: actions/setup-node@v2
@@ -25,4 +26,5 @@ runs:
           ${{ runner.os }}-build-
           ${{ runner.os }}-
     - name: Install Dependencies
+      shell: bash
       run: npm ci
