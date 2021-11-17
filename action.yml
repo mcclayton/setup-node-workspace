@@ -25,3 +25,7 @@ runs:
           ${{ runner.os }}-build-${{ env.cache-name }}-
           ${{ runner.os }}-build-
           ${{ runner.os }}-
+    - name: Install Dependencies
+      shell: bash
+      if: steps.cache.outputs.cache-hit != 'true'
+      run: npm ci
