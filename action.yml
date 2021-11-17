@@ -28,5 +28,4 @@ runs:
           ${{ runner.os }}-
     - name: Install Dependencies
       shell: bash
-      if: steps.npm_cache.outputs.cache-hit != 'true'
       run: npm ci
